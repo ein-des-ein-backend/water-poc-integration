@@ -1,0 +1,4 @@
+export enum ErrorType {
+  VALIDATION_ERROR = 'VALIDATION_ERROR',
+  OTHER_ERROR = 'OTHER_ERROR',
+}

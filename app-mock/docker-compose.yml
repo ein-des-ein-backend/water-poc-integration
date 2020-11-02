@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+    db:
+        container_name: app_db
+        hostname: app_db
+        image: postgres
+        restart: always
+        environment:
+            POSTGRES_DB: 'app_db'
+            POSTGRES_USER: 'postgres'
+            POSTGRES_PASSWORD: 'qwerty1'
+    
