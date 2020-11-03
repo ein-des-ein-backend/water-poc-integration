@@ -2,7 +2,7 @@ import { ServiceBusClient, ReceiveMode, QueueClient, Receiver, ServiceBusMessage
 import { Server, CustomTransportStrategy, RmqContext } from '@nestjs/microservices';
 import { BaseRpcContext } from '@nestjs/microservices/ctx-host/base-rpc.context';
 import { Observable } from 'rxjs';
-import { AzureServiceBusContext } from './core/azure-service-bus.context';
+import { AzureServiceBusContext } from './azure-service-bus.context';
 
 export class AzureServiceBusServer extends Server implements CustomTransportStrategy {
     private sbClient: ServiceBusClient;

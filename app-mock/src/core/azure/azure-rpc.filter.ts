@@ -1,7 +1,7 @@
 import { ArgumentsHost, ExceptionFilter, Catch } from '@nestjs/common';
-import { AzureRpcException } from "./azure-rpc.exception";
+import { AzureRpcException } from "../exceptions/azure-rpc.exception";
 import { AzureServiceBusContext } from './azure-service-bus.context';
-import { BusinessValidationException } from './business-validation.exception';
+import { BusinessValidationException } from '../exceptions/business-validation.exception';
 
 @Catch(AzureRpcException, BusinessValidationException)
 export class AzureRpcExceptionFilter implements ExceptionFilter {

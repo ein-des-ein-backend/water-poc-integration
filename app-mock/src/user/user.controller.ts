@@ -3,8 +3,8 @@ import { UserService } from "./user.service";
 import { User } from './user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { SapMessageService } from "src/core/sap-message.service";
-import { AppEvents } from "../core/app-events.enum";
+import { SapMessageService } from "../core/services/sap-message.service";
+import { AppEvents } from "../core/enums/app-events.enum";
 import { SapUserDto } from "./dto/sap-user.dto";
 
 @Controller('users')

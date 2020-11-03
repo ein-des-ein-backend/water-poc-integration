@@ -1,5 +1,5 @@
 import { RpcException } from "@nestjs/microservices";
-import { ValidationErrors } from './errors.interface';
+import { ValidationErrors } from '../interfaces/errors.interface';
 
 export class AzureRpcException extends RpcException {
     ;

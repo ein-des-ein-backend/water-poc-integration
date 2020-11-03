@@ -5,7 +5,7 @@ import { Repository, Not } from "typeorm";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { SapUserDto } from "./dto/sap-user.dto";
-import { BusinessValidationException } from "src/core/business-validation.exception";
+import { BusinessValidationException } from "../core/exceptions/business-validation.exception";
 
 @Injectable()
 export class UserService {

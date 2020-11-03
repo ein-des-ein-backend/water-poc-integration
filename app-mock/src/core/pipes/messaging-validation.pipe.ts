@@ -6,12 +6,9 @@ import {
   } from '@nestjs/common';
 import { validate, ValidationError } from 'class-validator';
 import { plainToClass } from 'class-transformer';
-import { ValidationErrors } from './errors.interface';
-import { ValidationErrorCode } from './enums';
-import { ServiceBusMessage } from '@azure/service-bus';
-import { RpcException } from '@nestjs/microservices';
-import { BaseRpcContext } from '@nestjs/microservices/ctx-host/base-rpc.context';
-import { AzureRpcException } from './azure-rpc.exception';
+import { ValidationErrors } from '../interfaces/errors.interface';
+import { ValidationErrorCode } from '../enums';
+import { AzureRpcException } from '../exceptions/azure-rpc.exception';
   // import { isValueInEnum } from './utils';
   
   const types = [String, Boolean, Number, Array, Object];

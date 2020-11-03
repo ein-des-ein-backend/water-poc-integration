@@ -1,4 +1,4 @@
-import { IValidationErrorItemWithoutCode } from './errors.interface';
+import { IValidationErrorItemWithoutCode } from '../interfaces/errors.interface';
 
 export class BusinessValidationException {
 

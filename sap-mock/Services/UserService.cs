@@ -1,8 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using sap_mock.Models;
-using Newtonsoft.Json;
 using Microsoft.EntityFrameworkCore;
 using sap_mock.RestDTOs;
 using System.Collections.Generic;
@@ -154,6 +152,11 @@ namespace sap_mock.Services {
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();                
             return user;
+        }
+
+        public async Task DeleteAllUsers() {
+            _context.Users.RemoveRange(await _context.Users.ToListAsync());
+            await _context.SaveChangesAsync();
         }
 
     }

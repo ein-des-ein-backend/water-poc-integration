@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { AzureServiceBusServer } from './azure-service-bus.server';
+import { AzureServiceBusServer } from './core/azure/azure-service-bus.server';
 import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {

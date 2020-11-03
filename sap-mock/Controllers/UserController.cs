@@ -82,6 +82,13 @@ namespace sap_mock.Controllers {
                 
             return CreatedAtAction("DeleteUser", new { id = deletedUser.Id }, deletedUser);;
         }
+
+        [HttpDelete]
+        public async Task<ActionResult<User>> DeleteAllUsers(long id)
+        {
+            await _userService.DeleteAllUsers();
+            return CreatedAtAction("DeleteAllUsers", null);
+        }
     }
 
 }

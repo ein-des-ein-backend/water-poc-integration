@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { ClientProxy } from '@nestjs/microservices';
-import { AzureServiceBusClient } from '../azure-service-bus.client';
-import { AppEvents } from "./app-events.enum";
+import { AzureServiceBusClient } from '../azure/azure-service-bus.client';
+import { AppEvents } from "../enums/app-events.enum";
 
 @Injectable()
 export class SapMessageService {

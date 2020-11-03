@@ -2,12 +2,12 @@ import { Controller, UseFilters } from "@nestjs/common";
 import { ServiceBusMessage } from '@azure/service-bus';
 import { UserService } from './user.service';
 import { MessagePattern, Payload, Ctx } from '@nestjs/microservices';
-import { SapEvents } from '../core/sap-events.enum';
+import { SapEvents } from '../core/enums/sap-events.enum';
 import { SapUserDto } from "./dto/sap-user.dto";
-import { MessagingValidationPipe } from "src/core/messaging-validation.pipe";
-import { AzureRpcExceptionFilter } from "src/core/azure-rpc.filter";
-import { AzureServiceBusContext } from "src/core/azure-service-bus.context";
-import { BusinessValidationException } from "src/core/business-validation.exception";
+import { MessagingValidationPipe } from "../core/pipes/messaging-validation.pipe";
+import { AzureRpcExceptionFilter } from "../core/azure/azure-rpc.filter";
+import { AzureServiceBusContext } from "../core/azure/azure-service-bus.context";
+import { BusinessValidationException } from "../core/exceptions/business-validation.exception";
 
 @Controller()
 export class UserSapController {
@@ -40,7 +40,8 @@ export class UserSapController {
     }
 
     @MessagePattern(SapEvents.UPDATED_USER)
-    public async updateOne(@Payload() payload: SapUserDto, @Ctx() context: AzureServiceBusContext): Promise<void> {
+    @UseFilters(new AzureRpcExceptionFilter())
+    public async updateOne(@Payload(new MessagingValidationPipe()) payload: SapUserDto, @Ctx() context: AzureServiceBusContext): Promise<void> {
         const message: ServiceBusMessage = context.getMessage();
         try {
             await this.userService.updateOneFromSap(payload);
@@ -61,7 +62,8 @@ export class UserSapController {
     }
 
     @MessagePattern(SapEvents.DELETED_USER)
-    public async removeOne(@Payload() payload: SapUserDto, @Ctx() context: AzureServiceBusContext): Promise<void> {
+    @UseFilters(new AzureRpcExceptionFilter())
+    public async removeOne(@Payload(new MessagingValidationPipe()) payload: SapUserDto, @Ctx() context: AzureServiceBusContext): Promise<void> {
         const message: ServiceBusMessage = context.getMessage();
         try {
             await this.userService.removeOneFromSap(payload.integrationId);
